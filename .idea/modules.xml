@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/go-scaffolding.iml" filepath="$PROJECT_DIR$/.idea/go-scaffolding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/user-management.iml" filepath="$PROJECT_DIR$/.idea/user-management.iml" />
     </modules>
   </component>
 </project>

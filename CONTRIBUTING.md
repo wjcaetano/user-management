@@ -1,4 +1,4 @@
-# Contributing to go-scaffolding
+# Contributing to User Management
 
 ## How to contribute
 
