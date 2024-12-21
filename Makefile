@@ -3,9 +3,9 @@ all: help
 SHELL := /bin/bash
 
 help:
-	@echo "<project-name> Makefile commands"
+	@echo "User Management Makefile commands"
 	@echo ""
-	@echo "build                 Executes the build of all images required to run <project-name> API"
+	@echo "build                 Executes the build of all images required to run User Management API"
 	@echo "down                  Stops all docker containers"
 	@echo "run                   Start all containers and keep attached"
 	@echo "run_local             Run application in the current terminal"
@@ -52,8 +52,8 @@ hooks:
 	@chmod -R +x .git/hooks/pre-push
 
 test:
-	@docker compose build --force-rm <project-name>
-	@docker compose run --rm <project-name> /commands/run_test.sh
+	@docker compose build --force-rm user-management
+	@docker compose run --rm user-management /commands/run_test.sh
 
 cleanup:
 	@find . -type d -name mocks -exec rm -rf {} \;
@@ -74,7 +74,7 @@ test_run:
 	@make load_env
 	@docker compose exec <project-name> /commands/test.sh
 
-.PHONY:
+.PHONY: specs_generate
 specs_generate:
 	@echo "Generating OpenAPI documentation using Docker"
 	docker run --rm \
@@ -84,7 +84,7 @@ specs_generate:
 		-i /local/openapi.yaml \
 		-o /local
 
-.PHONY:
+.PHONY: specs_serve
 specs_serve:
 	@echo "Stopping and removing existing Swagger UI container (if any)"
 	@docker rm -f swagger-ui || true

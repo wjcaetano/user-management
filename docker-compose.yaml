@@ -3,7 +3,7 @@ services:
   go-scaffolding:
     build: .
     command: ["/commands/run_local.sh"]
-    container_name: go-scaffolding
+    container_name: user-management
     env_file: variables.env
     ports:
       - "8080:8080"
