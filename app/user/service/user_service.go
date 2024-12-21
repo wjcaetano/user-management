@@ -2,9 +2,10 @@ package service
 
 import (
 	"errors"
-	"golang.org/x/crypto/bcrypt"
 	entity "user-management/app/user"
-	repository "user-management/app/user/repository/sql"
+	"user-management/app/user/repository"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 type UserService interface {

@@ -1,19 +1,20 @@
 package sql
 
 import (
-	"gorm.io/gorm"
 	entity "user-management/app/user"
+
+	"gorm.io/gorm"
 )
 
-type ReaderSql struct {
+type ReaderSQL struct {
 	DB *gorm.DB
 }
 
-func NewReaderSql(db *gorm.DB) *ReaderSql {
-	return &ReaderSql{DB: db}
+func NewReaderSQL(db *gorm.DB) *ReaderSQL {
+	return &ReaderSQL{DB: db}
 }
 
-func (r *ReaderSql) FindByID(id int) (*entity.User, error) {
+func (r *ReaderSQL) FindByID(id int) (*entity.User, error) {
 	var user entity.User
 	if err := r.DB.First(&user, id).Error; err != nil {
 		return nil, err
@@ -21,7 +22,7 @@ func (r *ReaderSql) FindByID(id int) (*entity.User, error) {
 	return &user, nil
 }
 
-func (r *ReaderSql) FindByEmail(email string) (*entity.User, error) {
+func (r *ReaderSQL) FindByEmail(email string) (*entity.User, error) {
 	var user entity.User
 	if err := r.DB.Where("email = ?").First(&user, "email = ?", email).Error; err != nil {
 		return nil, err
@@ -29,7 +30,7 @@ func (r *ReaderSql) FindByEmail(email string) (*entity.User, error) {
 	return &user, nil
 }
 
-func (r *ReaderSql) FindAll() ([]*entity.User, error) {
+func (r *ReaderSQL) FindAll() ([]*entity.User, error) {
 	var users []*entity.User
 	if err := r.DB.Find(&users).Error; err != nil {
 		return nil, err
@@ -37,7 +38,7 @@ func (r *ReaderSql) FindAll() ([]*entity.User, error) {
 	return users, nil
 }
 
-func (r *ReaderSql) FindAllWithLimit(limit int) ([]*entity.User, error) {
+func (r *ReaderSQL) FindAllWithLimit(limit int) ([]*entity.User, error) {
 	var users []*entity.User
 	if err := r.DB.Limit(limit).Find(&users).Error; err != nil {
 		return nil, err
