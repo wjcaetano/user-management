@@ -1,6 +1,8 @@
-package sql
+package repository
 
-import "user-management/app/user"
+import (
+	"user-management/app/user"
+)
 
 type UserRepository interface {
 	Create(user *user.User) error
