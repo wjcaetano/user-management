@@ -34,11 +34,11 @@ run: down
 	@docker compose up --build
 
 run_local:
-	@echo "Stopping and removing existing Swagger UI container (if any)"
-	@docker rm -f swagger-ui || true
-	@eval $$(cat resources/config/local.properties | grep -v '^#' | sed 's/^/export /' | sed 's/\./_/g') && export APP_PATH=$$PWD && export configFileName=resources/config/local.properties && export SCOPE=local && go run cmd/api/*.go
+	@set -a; source variables.env; set +a; \
+	export APP_PATH=$$PWD && go run cmd/api/*.go
 
 fs: down
+	@export $(cat variables.env | grep -v '^#' | xargs)
 	@docker compose build
 	@docker compose up -d
 

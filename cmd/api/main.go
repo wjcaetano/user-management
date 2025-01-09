@@ -1,8 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"user-management/cmd/api/modules"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	app := modules.NewApp()
+	app.Run()
 
 }

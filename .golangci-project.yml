@@ -35,6 +35,9 @@ linters-settings:
           - github.com/h2non/gock
           - user-management/app/user
           - github.com/gin-gonic/gin
+          - user-management/internal/routes
+          - github.com/go-chi/chi/v5
+          - user-management/internal/config
   dupl:
     # tokens count to trigger issue, 150 by default
     threshold: 150
